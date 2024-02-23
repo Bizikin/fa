@@ -56,13 +56,14 @@ const Wrapper = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  background: rgba(10, 20, 20, 0.5);
   transition: 1s;
+  backdrop-filter: blur(3px);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: var(--transition);
   z-index: 999;
-  /* opacity: 0.5; */
+  opacity: 1;
   .modal {
     display: flex;
     justify-content: center;
@@ -99,7 +100,6 @@ const Wrapper = styled.div`
       0px 42.772px 17.011px 0px rgba(0, 0, 0, 0.02),
       0px 66.588px 18.47px 0px rgba(0, 0, 0, 0);
     backdrop-filter: blur(15.553292274475098px);
-    color: #000;
     text-shadow: 0px 1.619px 12.143px rgba(0, 0, 0, 0.25);
     font-family: Nunito, sans-serif;
     font-size: 16px;
@@ -109,6 +109,8 @@ const Wrapper = styled.div`
     text-transform: uppercase;
     transition: all 1s;
     text-align: center;
+    color: rgba(255, 255, 255, 0.46);
+
     cursor: pointer;
     &:hover {
       background-color: #ffffff;

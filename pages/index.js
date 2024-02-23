@@ -4,6 +4,7 @@ import styled from "styled-components";
 import RestaurantModal from "../components/modal/RestaurantModal";
 import { useSelector, useDispatch } from "react-redux";
 import { restaurantModalHandler } from "../features/user/userSlice";
+import Slider from "../components/slider/slider";
 
 const Index = () => {
   useEffect(() => {
@@ -22,7 +23,12 @@ const Index = () => {
 
   const { isRestaurantModal } = useSelector((store) => store.user);
   const dispatch = useDispatch();
-  return <>{isRestaurantModal && <RestaurantModal />}</>;
+  return (
+    <Wrapper>
+      {isRestaurantModal && <RestaurantModal />}
+      <Slider />
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.div`

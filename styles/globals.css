@@ -1,3 +1,11 @@
+:root {
+  --shadow-1: 0px 0px 0px 0px rgba(0, 0, 0, 0.14),
+    0px 2.43px 5.832px 0px rgba(0, 0, 0, 0.13),
+    0px 10.693px 10.693px 0px rgba(0, 0, 0, 0.12),
+    0px 23.816px 14.581px 0px rgba(0, 0, 0, 0.07),
+    0px 42.772px 17.011px 0px rgba(0, 0, 0, 0.02),
+    0px 66.588px 18.47px 0px rgba(0, 0, 0, 0);
+}
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;700&display=swap");
 
 * {

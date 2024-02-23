@@ -71,13 +71,15 @@ const Wrapper = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  background: rgba(10, 20, 20, 0.5);
   transition: 1s;
+  backdrop-filter: blur(3px);
   display: flex;
   align-items: center;
   justify-content: center;
-
+  transition: var(--transition);
   z-index: 999;
-  /* opacity: 0.5; */
+  opacity: 1;
   .modal {
     display: flex;
     justify-content: center;

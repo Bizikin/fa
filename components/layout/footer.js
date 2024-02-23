@@ -7,9 +7,9 @@ import { SvgFooterLogo } from "../SvgComponents";
 const Footer = () => {
   return (
     <Wrapper>
-      <div className="logo">
+      <Link href="/" className="logo">
         <SvgFooterLogo />
-      </div>
+      </Link>
       <div className="menu">
         <Link href="contacts" className="item">
           Контакты
@@ -42,9 +42,9 @@ const Footer = () => {
   );
 };
 const Wrapper = styled.div`
-  position: fixed;
+  /* position: fixed;
   bottom: 0;
-  left: 0;
+  left: 0; */
   width: 100%;
   display: flex;
   align-items: center;

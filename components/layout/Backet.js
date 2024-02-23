@@ -6,7 +6,7 @@ import Link from "next/link";
 const Backet = () => {
   return (
     <Wrapper>
-      <Link href="/backet">
+      <Link href="/backet" className="link">
         <SvgBacket />
         <div className="count">0</div>
       </Link>
@@ -14,16 +14,20 @@ const Backet = () => {
   );
 };
 const Wrapper = styled.div`
-  position: absolute;
-  right: 40px;
+  position: fixed;
+  right: 30px;
   bottom: 100px;
-  cursor: pointer;
+  z-index: 100;
+  .link {
+    position: relative;
+    cursor: pointer;
+  }
   .count {
     background: black;
     width: 30px;
     height: 30px;
     position: absolute;
-    top: -5px;
+    top: -85px;
     right: 5px;
     border-radius: 50%;
     color: white;
@@ -36,6 +40,7 @@ const Wrapper = styled.div`
   @media (min-width: 768px) {
   }
   @media (min-width: 992px) {
+    bottom: 300px;
   }
   @media (min-width: 1200px) {
   }

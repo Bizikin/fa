@@ -6,6 +6,7 @@ const initialState = {
   isRestaurantModal: true,
   isModalMenu: false,
   currentAddress: "",
+  isDeliveryModal: false,
 };
 
 // export const registerUser = createAsyncThunk(
@@ -28,6 +29,9 @@ const userSlice = createSlice({
     currentAddressHandler: (state, { payload }) => {
       state.currentAddress = payload;
     },
+    deliveryModalHandler: (state, { payload }) => {
+      state.isDeliveryModal = payload;
+    },
   },
   extraReducers: (builder) => {
     // builder.addCase(addClient.pending, (state) => {
@@ -48,5 +52,6 @@ export const {
   restaurantModalHandler,
   modalMenuHandler,
   currentAddressHandler,
+  deliveryModalHandler,
 } = userSlice.actions;
 export default userSlice.reducer;
