@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styled from "styled-components";
-import Slider1 from "./slider1";
+import Slider1 from "./Slider1";
 import Slider2 from "./slider2";
 import Slider3 from "./slider3";
 import Slider4 from "./slider4";
