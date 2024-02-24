@@ -57,7 +57,7 @@ const Wrapper = styled.div`
 
   .content {
     width: 100%;
-    padding: 30px;
+    padding: 15px;
     .line1 {
       font-size: 25px;
       font-weight: 900;
@@ -104,12 +104,13 @@ const Wrapper = styled.div`
         padding: 10px 5px;
         border: 1px solid #ffffde;
         border-image-slice: 1;
-        width: 430px;
+        /* width: 430px; */
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
+        flex-wrap: wrap;
         border-image-source: linear-gradient(
           0deg,
           #b48a39,
@@ -145,13 +146,17 @@ const Wrapper = styled.div`
     margin: 20px;
     .picture {
       width: 100%;
-      height: 350px;
+      height: 300px;
       border-radius: 32px;
       object-fit: cover;
       box-shadow: var(--shadow-1);
     }
   }
+
   @media (min-width: 576px) {
+    .content {
+      padding: 30px;
+    }
     .image2 {
       .picture {
         width: 400px;

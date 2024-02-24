@@ -53,10 +53,11 @@ const Wrapper = styled.div`
   background: white;
   margin: 10px;
   box-shadow: var(--shadow-1);
+  cursor: grab;
 
   .content {
     width: 100%;
-    padding: 30px;
+    padding: 15px;
     .line1 {
       font-size: 25px;
       font-weight: 900;
@@ -123,13 +124,16 @@ const Wrapper = styled.div`
     margin: 20px;
     .picture {
       width: 100%;
-      height: 350px;
+      height: 300px;
       border-radius: 32px;
       object-fit: cover;
       box-shadow: var(--shadow-1);
     }
   }
   @media (min-width: 576px) {
+    .content {
+      padding: 30px;
+    }
     .image2 {
       .picture {
         width: 400px;

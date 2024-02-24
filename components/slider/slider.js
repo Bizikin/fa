@@ -1,45 +1,102 @@
-import React from "react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import styled from "styled-components";
-import Slider1 from "./slider1";
-import Slider2 from "./slider2";
-import Slider3 from "./slider3";
-import Slider4 from "./slider4";
-import left from "../../public/images/slider/arr-left.png";
-import right from "../../public/images/slider/arr-right.png";
-import Image from "next/image";
+import Slider1 from "./Slider1";
+import Slider2 from "./Slider2";
+import Slider3 from "./Slider3";
+import Slider4 from "./Slider4";
 
 const Slider = () => {
+  const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const sliders = [
+    <Slider1 key={0} />,
+    <Slider2 key={1} />,
+    <Slider3 key={2} />,
+    <Slider4 key={3} />,
+  ];
+
+  const paginate = (newDirection) => {
+    setDirection(newDirection);
+    setIndex(
+      (prevIndex) =>
+        (prevIndex + newDirection + sliders.length) % sliders.length
+    );
+  };
+
+  const handleDragEnd = (event, info) => {
+    const offset = info.offset.x;
+    const velocity = info.velocity.x;
+
+    if (offset < -100 || velocity < -500) {
+      paginate(1);
+    } else if (offset > 100 || velocity > 500) {
+      paginate(-1);
+    }
+  };
+
   return (
     <Wrapper>
-      <Image className="left" src={left} />
-      <Slider1 />
-      <Slider2 />
-      <Slider3 />
-      <Slider4 />
-      <Image className="right" src={right} />
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={index}
+          initial={{ x: direction > 0 ? 1300 : -1300 }}
+          animate={{ x: 0 }}
+          exit={{ x: direction > 0 ? -1300 : 1300 }}
+          transition={{ duration: 0.5 }}
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          onDragEnd={handleDragEnd}
+        >
+          {sliders[index]}
+        </motion.div>
+      </AnimatePresence>
+      <Button className="prev" onClick={() => paginate(-1)}>
+        {"<"}
+      </Button>
+      <Button className="next" onClick={() => paginate(1)}>
+        {">"}
+      </Button>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  margin: 20px;
-  .left {
-    position: absolute;
-    bottom: 100px;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Button = styled.button`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  padding: 10px;
+  z-index: 2;
+  box-shadow: var(--shadow-1);
+  transition: 0.3s;
+
+  &:hover {
+    box-shadow: none;
   }
-  .right {
-    position: absolute;
-    bottom: 200px;
+
+  &.prev {
+    left: 10px;
   }
-  @media (min-width: 576px) {
+
+  &.next {
+    right: 10px;
   }
-  @media (min-width: 768px) {
-  }
-  @media (min-width: 992px) {
-  }
-  @media (min-width: 1200px) {
-  }
-  @media (min-width: 1400px) {
+
+  @media (max-width: 1200px) {
+    display: none;
   }
 `;
+
 export default Slider;
