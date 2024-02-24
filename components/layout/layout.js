@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import Footer from "./footer";
 import Header from "./header";
-import Backet from "./backet";
+import Backet from "./bucket";
 import Delivery from "./delivery";
 import styled from "styled-components";
 import DeliveryModal from "../modal/DeliveryModal.";
