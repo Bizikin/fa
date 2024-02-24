@@ -99,7 +99,7 @@ const Header = () => {
 };
 const Wrapper = styled.div`
   width: 100%;
-  height: 200px;
+  height: 150px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -152,6 +152,8 @@ const Wrapper = styled.div`
   @media (min-width: 768px) {
   }
   @media (min-width: 992px) {
+    height: 200px;
+
     .menu {
       display: flex;
       justify-content: space-around;
