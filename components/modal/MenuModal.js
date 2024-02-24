@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { modalMenuHandler } from "../../features/user/userSlice";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const MenuModal = () => {
   const { isModalMenu } = useSelector((store) => store.user);
@@ -57,9 +58,18 @@ const MenuModal = () => {
         ref={wrapperRef}
       >
         <div className="choose-wrapper">
-          <div className="choose-address">Меню</div>
-          <div className="choose-address">О нас</div>
-          <div className="choose-address">Контакты</div>
+          <Link href="/" onClick={() => dispatch(modalMenuHandler(false))}>
+            <div className="choose-address">Меню</div>
+          </Link>
+          <Link href="/about" onClick={() => dispatch(modalMenuHandler(false))}>
+            <div className="choose-address">О нас</div>
+          </Link>
+          <Link
+            href="/contacts"
+            onClick={() => dispatch(modalMenuHandler(false))}
+          >
+            <div className="choose-address">Контакты</div>
+          </Link>
         </div>
       </motion.div>
     </Wrapper>
@@ -116,7 +126,9 @@ const Wrapper = styled.div`
       0px 42.772px 17.011px 0px rgba(0, 0, 0, 0.02),
       0px 66.588px 18.47px 0px rgba(0, 0, 0, 0);
     backdrop-filter: blur(15.553292274475098px);
-    color: #000;
+    /* color: #000;
+    color: rgba(217, 217, 217, 0.02); */
+    color: white;
     text-shadow: 0px 1.619px 12.143px rgba(0, 0, 0, 0.25);
     font-family: Nunito, sans-serif;
     font-size: 16px;
