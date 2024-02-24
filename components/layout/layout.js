@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 import Footer from "./footer";
 import Header from "./header";
-import Backet from "./bucket";
+import Backet from "./backet";
 import Delivery from "./delivery";
 import styled from "styled-components";
-import DeliveryModal from "../modal/DeliveryModal.";
+import DeliveryModal from "../modal/DeliveryModal";
 import { useSelector, useDispatch } from "react-redux";
 import { AnimatePresence } from "framer-motion";
 
