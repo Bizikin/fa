@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import {} from "./thunk";
+import { getProductsThunk } from "./thunk";
 
 const initialState = {
   isLoading: false,
@@ -7,14 +7,17 @@ const initialState = {
   isModalMenu: false,
   currentAddress: "",
   isDeliveryModal: false,
+  products: [],
+  currentCategory: "",
 };
 
-// export const registerUser = createAsyncThunk(
-//   "user/registerUser",
-//   async (user, thunkAPI) => {
-//     return registerUserThunk("/auth/signup", user, thunkAPI);
-//   }
-// );
+export const getProducts = createAsyncThunk(
+  "products/rgetproducts",
+  async (info, thunkAPI) => {
+    const url = `api/product?restaurantId=${info.restaurantId}&categoryId=${info.categoryId}`;
+    return getProductsThunk(url, thunkAPI);
+  }
+);
 
 const userSlice = createSlice({
   name: "user",
@@ -34,17 +37,19 @@ const userSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    // builder.addCase(addClient.pending, (state) => {
-    //   state.isLoading = true;
-    // });
-    // builder.addCase(addClient.fulfilled, (state, { payload }) => {
-    //   state.isLoading = false;
-    //   state.clients.push(payload);
-    // });
-    // builder.addCase(addClient.rejected, (state, { payload }) => {
-    //   state.isLoading = false;
-    //   toast.error(payload);
-    // });
+    builder.addCase(getProducts.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(getProducts.fulfilled, (state, { payload }) => {
+      state.isLoading = false;
+      state.products = payload;
+      console.log(payload);
+    });
+    builder.addCase(getProducts.rejected, (state, { payload }) => {
+      state.isLoading = false;
+      // toast.error(payload);
+      console.error(payload);
+    });
   },
 });
 
