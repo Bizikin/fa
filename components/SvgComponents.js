@@ -273,7 +273,7 @@ export const SvgBacketSmall = () => {
           width="52"
           height="52"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
           <feFlood flood-opacity="0" result="BackgroundImageFix" />
           <feColorMatrix
@@ -317,8 +317,8 @@ export const SvgMinus = () => {
       <g id="Subtract">
         <path
           id="Subtract_2"
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M15 30.9541C23.2843 30.9541 30 24.2384 30 15.9541C30 7.66983 23.2843 0.954102 15 0.954102C6.71573 0.954102 0 7.66983 0 15.9541C0 24.2384 6.71573 30.9541 15 30.9541ZM7.5 13.4541C6.11929 13.4541 5 14.5734 5 15.9541C5 17.3348 6.11929 18.4541 7.5 18.4541H22.5C23.8807 18.4541 25 17.3348 25 15.9541C25 14.5734 23.8807 13.4541 22.5 13.4541H7.5Z"
           fill="black"
         />
@@ -336,8 +336,8 @@ export const SvgPlus = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M15 30.9541C23.2843 30.9541 30 24.2384 30 15.9541C30 7.66983 23.2843 0.954102 15 0.954102C6.71573 0.954102 0 7.66983 0 15.9541C0 24.2384 6.71573 30.9541 15 30.9541ZM17.055 18.0091H23.2201C23.9767 18.0091 24.5902 17.3956 24.5902 16.6391V15.2691C24.5902 14.5126 23.9767 13.8991 23.2201 13.8991H17.055V7.73394C17.055 6.97744 16.4415 6.36392 15.685 6.36392H14.315C13.5585 6.36392 12.945 6.97744 12.945 7.73394V13.8991H6.77986C6.02335 13.8991 5.40984 14.5126 5.40984 15.2691V16.6391C5.40984 17.3956 6.02335 18.0091 6.77986 18.0091H12.945V24.1742C12.945 24.9307 13.5585 25.5443 14.315 25.5443H15.685C16.4415 25.5443 17.055 24.9307 17.055 24.1742V18.0091Z"
         fill="black"
       />

@@ -1,22 +1,28 @@
 import React from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import Product from "./product";
+import Category from "./category";
 
-const Products = () => {
-  const { products } = useSelector((store) => store.user);
+const Categories = () => {
+  const { categories, currentAddress } = useSelector((store) => store.user);
   return (
     <Wrapper>
-      {products.map((product) => (
-        <Product key={product.id} {...product} />
+      {categories.map((category) => (
+        <Category key={category.id} {...category} />
       ))}
     </Wrapper>
   );
 };
+
 const Wrapper = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  align-items: center;
+  overflow-x: scroll;
+  width: 90%;
+  cursor: grab;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  overflow-x: auto;
 
   @media (min-width: 576px) {
   }
@@ -29,4 +35,5 @@ const Wrapper = styled.div`
   @media (min-width: 1400px) {
   }
 `;
-export default Products;
+
+export default Categories;

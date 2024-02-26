@@ -9,12 +9,21 @@ const initialState = {
   isDeliveryModal: false,
   products: [],
   currentCategory: "",
+  categories: [],
 };
 
 export const getProducts = createAsyncThunk(
-  "products/rgetproducts",
+  "products/getproducts",
   async (info, thunkAPI) => {
     const url = `api/product?restaurantId=${info.restaurantId}&categoryId=${info.categoryId}`;
+    return getProductsThunk(url, thunkAPI);
+  }
+);
+
+export const getCategories = createAsyncThunk(
+  "categories/getcategiries",
+  async (info, thunkAPI) => {
+    const url = `api/category?restaurantId=${info.categoryId}`;
     return getProductsThunk(url, thunkAPI);
   }
 );
@@ -32,6 +41,9 @@ const userSlice = createSlice({
     currentAddressHandler: (state, { payload }) => {
       state.currentAddress = payload;
     },
+    currentCategoryHandler: (state, { payload }) => {
+      state.currentCategory = payload;
+    },
     deliveryModalHandler: (state, { payload }) => {
       state.isDeliveryModal = payload;
     },
@@ -43,12 +55,20 @@ const userSlice = createSlice({
     builder.addCase(getProducts.fulfilled, (state, { payload }) => {
       state.isLoading = false;
       state.products = payload;
-      console.log(payload);
     });
     builder.addCase(getProducts.rejected, (state, { payload }) => {
       state.isLoading = false;
-      // toast.error(payload);
-      console.error(payload);
+    });
+
+    builder.addCase(getCategories.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(getCategories.fulfilled, (state, { payload }) => {
+      state.isLoading = false;
+      state.categories = payload;
+    });
+    builder.addCase(getCategories.rejected, (state, { payload }) => {
+      state.isLoading = false;
     });
   },
 });
@@ -58,5 +78,6 @@ export const {
   modalMenuHandler,
   currentAddressHandler,
   deliveryModalHandler,
+  currentCategoryHandler,
 } = userSlice.actions;
 export default userSlice.reducer;

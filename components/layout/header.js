@@ -20,11 +20,15 @@ const Header = () => {
   const { isModalMenu, currentAddress } = useSelector((store) => store.user);
 
   const addressHandler1 = () => {
-    dispatch(currentAddressHandler("Кордонный переулок 1И"));
+    dispatch(
+      currentAddressHandler({ address: "Кордонный переулок 1И", categoryId: 1 })
+    );
     setExtra(false);
   };
   const addressHandler2 = () => {
-    dispatch(currentAddressHandler("Первомайская 39"));
+    dispatch(
+      currentAddressHandler({ address: "Первомайская 39", categoryId: 2 })
+    );
     setExtra(false);
   };
 
@@ -33,7 +37,56 @@ const Header = () => {
       <AnimatePresence>{isModalMenu && <MenuModal />}</AnimatePresence>
       <div className="menu">
         <div className="restaurants">
-          {currentAddress && <p>{currentAddress}</p>}
+          {currentAddress && <p>{currentAddress.address}</p>}
+          {!currentAddress && <p>Ресторан не выбран</p>}
+          <motion.div
+            animate={{ rotate: extra ? 180 : 0 }}
+            transition={{
+              type: "spring",
+              bounce: 0.5,
+            }}
+            className="icon"
+            onClick={() => setExtra(!extra)}
+          >
+            <IoIosArrowDown />
+          </motion.div>
+          <AnimatePresence>
+            {extra && (
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: -20, scale: 0.7 },
+                  visible: { opacity: 1, y: 0, scale: 1 },
+                }}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                transition={{ type: "spring", bounce: 0.5 }}
+                className="extra"
+              >
+                <p className="restaurant" onClick={addressHandler1}>
+                  Кордонный переулок 1И
+                </p>
+                <p className="restaurant" onClick={addressHandler2}>
+                  Первомайская 39
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+        <div className="menu">
+          <Link className="link" href="/">
+            Меню
+          </Link>
+        </div>
+      </div>
+      <div className="menu2" onClick={() => dispatch(modalMenuHandler(true))}>
+        <GiHamburgerMenu />
+      </div>
+      <Link className="logo link" href="/">
+        <SvgHeaderLogo />
+        {/* _______________________________________________ */}
+        <div className="restaurants r2">
+          {currentAddress && <p>{currentAddress.address}</p>}
           {!currentAddress && <p>Ресторан не выбран</p>}
           <motion.div
             animate={{ rotate: extra ? 180 : 0 }}
@@ -62,23 +115,13 @@ const Header = () => {
                   Кордонный переулок 1И
                 </p>
                 <p className="restaurant" onClick={addressHandler2}>
-                  Первомайская
+                  Первомайская 39
                 </p>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
-        <div className="menu">
-          <Link className="link" href="/">
-            Меню
-          </Link>
-        </div>
-      </div>
-      <div className="menu2" onClick={() => dispatch(modalMenuHandler(true))}>
-        <GiHamburgerMenu />
-      </div>
-      <Link className="logo link" href="/">
-        <SvgHeaderLogo />
+        {/* _______________________________________________ */}
       </Link>
       <div className="menu">
         <Link href="/about" className="about link">
@@ -112,11 +155,17 @@ const Wrapper = styled.div`
     text-decoration: none;
     color: black;
   }
+  .logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   .restaurants {
     display: flex;
     align-items: center;
     font-size: 20px;
     position: relative;
+
     .icon {
       svg {
         margin: 5px;
@@ -128,6 +177,12 @@ const Wrapper = styled.div`
     .extra {
       position: absolute;
       top: 60px;
+      background: white;
+      padding: 10px;
+      border-radius: 15px;
+      z-index: 100;
+      box-shadow: var(--shadow-1);
+      width: 250px;
       p {
         margin: 0;
         font-size: 17px;
@@ -147,13 +202,20 @@ const Wrapper = styled.div`
       font-size: 25px;
     }
   }
+  .r2 {
+    width: 280px;
+    display: flex;
+    justify-content: center;
+  }
   @media (min-width: 576px) {
   }
   @media (min-width: 768px) {
   }
   @media (min-width: 992px) {
     height: 200px;
-
+    .r2 {
+      display: none;
+    }
     .menu {
       display: flex;
       justify-content: space-around;

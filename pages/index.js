@@ -6,17 +6,30 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   restaurantModalHandler,
   getProducts,
+  getCategories,
 } from "../features/user/userSlice";
 import Slider from "../components/slider/slider";
 import Products from "../components/main-page/products";
+import Categories from "../components/main-page/categories";
 
 const Index = () => {
-  const { isRestaurantModal } = useSelector((store) => store.user);
+  const { isRestaurantModal, currentAddress, currentCategory } = useSelector(
+    (store) => store.user
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getProducts({ restaurantId: 1, categoryId: 1 }));
-  }, []);
+    dispatch(
+      getProducts({
+        restaurantId: currentAddress.categoryId,
+        categoryId: currentCategory.id,
+      })
+    );
+  }, [currentCategory]);
+
+  useEffect(() => {
+    dispatch(getCategories({ categoryId: currentAddress.categoryId }));
+  }, [currentAddress]);
 
   useEffect(() => {
     const handleBeforeUnload = (e) => {
@@ -36,6 +49,7 @@ const Index = () => {
     <Wrapper>
       {isRestaurantModal && <RestaurantModal />}
       <Slider />
+      <Categories />
       <Products />
     </Wrapper>
   );

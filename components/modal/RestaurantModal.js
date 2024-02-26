@@ -26,11 +26,15 @@ const RestaurantModal = () => {
   }, []);
 
   const addressHandler1 = () => {
-    dispatch(currentAddressHandler("Первомайская 39"));
+    dispatch(
+      currentAddressHandler({ address: "Кордонный переулок 1И", categoryId: 1 })
+    );
     dispatch(restaurantModalHandler(false));
   };
   const addressHandler2 = () => {
-    dispatch(currentAddressHandler("Кордонный переулок 1И"));
+    dispatch(
+      currentAddressHandler({ address: "Первомайская 39", categoryId: 2 })
+    );
     dispatch(restaurantModalHandler(false));
   };
 
@@ -40,10 +44,10 @@ const RestaurantModal = () => {
         <div className="choose-title">Выберите адрес кафе</div>
         <div className="choose-wrapper">
           <div className="choose-address" onClick={addressHandler1}>
-            Первомайская 39
+            Кордоный переулок 1И
           </div>
           <div className="choose-address" onClick={addressHandler2}>
-            Кордоный переулок 1И
+            Первомайская 39
           </div>
         </div>
       </div>
