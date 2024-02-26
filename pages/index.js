@@ -21,14 +21,14 @@ const Index = () => {
   useEffect(() => {
     dispatch(
       getProducts({
-        restaurantId: currentAddress?.categoryId,
-        categoryId: currentCategory?.id,
+        restaurantId: currentAddress?.categoryId || 1,
+        categoryId: currentCategory?.id || 1,
       })
     );
   }, [currentCategory]);
 
   useEffect(() => {
-    dispatch(getCategories({ categoryId: currentAddress?.categoryId }));
+    dispatch(getCategories({ categoryId: currentAddress?.categoryId || 1 }));
   }, [currentAddress]);
 
   useEffect(() => {
