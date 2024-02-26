@@ -7,7 +7,7 @@ const Categories = () => {
   const { categories, currentAddress } = useSelector((store) => store.user);
   return (
     <Wrapper>
-      {categories.map((category) => (
+      {categories?.map((category) => (
         <Category key={category.id} {...category} />
       ))}
     </Wrapper>

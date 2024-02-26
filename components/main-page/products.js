@@ -7,7 +7,7 @@ const Products = () => {
   const { products } = useSelector((store) => store.user);
   return (
     <Wrapper>
-      {products.map((product) => (
+      {products?.map((product) => (
         <Product key={product.id} {...product} />
       ))}
     </Wrapper>
