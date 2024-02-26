@@ -28,7 +28,7 @@ const Index = () => {
   }, [currentCategory]);
 
   useEffect(() => {
-    dispatch(getCategories({ categoryId: currentAddress.categoryId }));
+    dispatch(getCategories({ categoryId: currentAddress?.categoryId }));
   }, [currentAddress]);
 
   useEffect(() => {
