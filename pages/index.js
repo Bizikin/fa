@@ -21,8 +21,8 @@ const Index = () => {
   useEffect(() => {
     dispatch(
       getProducts({
-        restaurantId: currentAddress.categoryId,
-        categoryId: currentCategory.id,
+        restaurantId: currentAddress?.categoryId,
+        categoryId: currentCategory?.id,
       })
     );
   }, [currentCategory]);
