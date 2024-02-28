@@ -23,6 +23,18 @@ const Index = () => {
           <Image className="map" src={img1} alt="" />
         </div>
       </div>
+      <div className="block2">
+        <p className="block2-text">У нас также установлена плата за вход:</p>
+        <p className="text">
+          <span>До 16:00</span> – 100 рублей с человека
+        </p>
+        <p className="text">
+          <span>После 16:00 </span> – 300 рублей с человека
+        </p>
+        <div className="text2">
+          <p className="text">Детям до 7 лет вход бесплатный</p>
+        </div>
+      </div>
     </Wrapper>
   );
 };
@@ -80,10 +92,37 @@ const Wrapper = styled.div`
   .line3 {
     color: #000;
     font-family: Nunito, sans-serif;
-    font-size: 24px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 600;
     line-height: 28px;
+  }
+  .block2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 20px 0;
+    .text {
+      font-size: 18px;
+    }
+    .text2 {
+      background: silver;
+      padding: 0px;
+    }
+    .block2-text {
+      color: #000;
+      font-family: Inter, sans-serif;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+  span {
+    font-weight: 700;
   }
   @media (min-width: 576px) {
     .block {
@@ -116,17 +155,26 @@ const Wrapper = styled.div`
       align-items: center;
       width: 500px;
     }
+    .line1 {
+      font-size: 40px;
+    }
+    .line2 {
+      font-size: 32px;
+      text-align: left;
+    }
+    .line3 {
+      font-size: 18px;
+    }
+    .block2 {
+      .text {
+        font-size: 24px;
+      }
+      .block2-text {
+        font-size: 24px;
+      }
+    }
   }
-  .line1 {
-    font-size: 40px;
-  }
-  .line2 {
-    font-size: 32px;
-    text-align: left;
-  }
-  .line3 {
-    font-size: 18px;
-  }
+
   @media (min-width: 1200px) {
   }
   @media (min-width: 1400px) {
