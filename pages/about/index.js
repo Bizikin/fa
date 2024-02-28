@@ -2,6 +2,12 @@ import React from "react";
 import { Fragment } from "react";
 import styled from "styled-components";
 import img1 from "../../public/images/about-us/main.png";
+import img2 from "../../public/images/about-us/grid1.png";
+import img3 from "../../public/images/about-us/grid3.png";
+import img4 from "../../public/images/about-us/grid4.png";
+import img5 from "../../public/images/about-us/grid5.png";
+import img6 from "../../public/images/about-us/grid6.png";
+import img7 from "../../public/images/about-us/grid7.png";
 import Image from "next/image";
 
 const Index = () => {
@@ -33,6 +39,46 @@ const Index = () => {
         </p>
         <div className="text2">
           <p className="text">Детям до 7 лет вход бесплатный</p>
+        </div>
+      </div>
+      <div className="block3">
+        <p className="header">Из особенностей нашей сети:</p>
+        <div className="block3-address">
+          <div className="koffe">
+            <div className="k1">
+              <p className="k-text">КАФЕ ПО АДРЕСУ</p>
+              <p className="k-address">ПЕРВОМАЙСКАЯ 39</p>
+              <p className="k-text">Банкетный зал «Барбарис»</p>
+              <p className="k-text2 k-height">
+                Общей вместимостью до 80 человек
+              </p>
+              <p className="k-text">VIP-комната</p>
+              <p className="k-text2">Общей вместимостью до 10 человек</p>
+            </div>
+          </div>
+          <div className="k2"></div>
+          <div className="koffe">
+            <div className="k1">
+              <p className="k-text">КАФЕ ПО АДРЕСУ</p>
+              <p className="k-address">КОРДОННЫЙ 1И</p>
+              <p className="k-text">Вместимость до 65 человек</p>
+              <p className="k-height">Без учета летней веранды</p>
+              <p className="k-text">Первая береговая линия</p>
+              <p>В шаговой доступности к морю</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="block4">
+        <div className="row">
+          <Image className="picture" src={img2} />
+          <Image className="picture" src={img3} />
+          <Image className="picture" src={img4} />
+        </div>
+        <div className="row">
+          <Image className="picture" src={img5} />
+          <Image className="picture" src={img6} />
+          <Image className="picture" src={img7} />
         </div>
       </div>
     </Wrapper>
@@ -124,6 +170,68 @@ const Wrapper = styled.div`
   span {
     font-weight: 700;
   }
+  .block3 {
+    .header {
+      color: #000;
+      font-family: Inter, sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      text-align: center;
+    }
+    .block3-address {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      .koffe {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+      }
+      .k1 {
+        p {
+          margin: 10px;
+        }
+      }
+    }
+  }
+  .k-text {
+    color: #000;
+    font-family: Nunito, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  .k-address {
+    color: #b48a39;
+    font-family: Inter, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    height: 50px;
+  }
+  .k-height {
+    height: 50px;
+  }
+  .block4 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 30px 0;
+    .row {
+      width: 45%;
+      .picture {
+        width: 95%;
+        margin: 7px;
+        height: auto;
+      }
+    }
+  }
   @media (min-width: 576px) {
     .block {
       .picture {
@@ -173,9 +281,45 @@ const Wrapper = styled.div`
         font-size: 24px;
       }
     }
+    .block3 {
+      width: 900px;
+      .header {
+        font-size: 36px;
+      }
+      .block3-address {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .k2 {
+        border-right: 3px solid black;
+      }
+    }
+    .k-text {
+      font-size: 24px;
+    }
+    .k-address {
+      font-size: 32px;
+      height: 70px;
+    }
   }
-
+  .block4 {
+    display: flex;
+    flex-wrap: wrap;
+    .picture {
+      width: 400px;
+      height: auto;
+    }
+  }
   @media (min-width: 1200px) {
+    .block4 {
+      display: flex;
+      flex-wrap: wrap;
+      .picture {
+        width: 500px;
+        height: auto;
+      }
+    }
   }
   @media (min-width: 1400px) {
   }
