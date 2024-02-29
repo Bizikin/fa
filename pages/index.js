@@ -7,6 +7,7 @@ import {
   restaurantModalHandler,
   getProducts,
   getCategories,
+  createSession,
 } from "../features/user/userSlice";
 import Slider from "../components/slider/slider";
 import Products from "../components/main-page/products";
@@ -17,6 +18,10 @@ const Index = () => {
     (store) => store.user
   );
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(createSession());
+  }, []);
 
   useEffect(() => {
     dispatch(
@@ -61,7 +66,6 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-
   @media (min-width: 576px) {
   }
   @media (min-width: 768px) {

@@ -2,13 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import { SvgBacket } from "../SvgComponents";
 import Link from "next/link";
+import { useSelector, useDispatch } from "react-redux";
 
 const Backet = () => {
+  const { items } = useSelector((store) => store.user);
   return (
     <Wrapper>
       <Link href="/backet" className="link">
         <SvgBacket />
-        <div className="count">0</div>
+        <div className="count">{items}</div>
       </Link>
     </Wrapper>
   );

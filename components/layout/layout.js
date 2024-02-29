@@ -24,6 +24,11 @@ const Layout = (props) => {
   );
 };
 const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100%;
+  justify-content: space-between;
   @media (min-width: 576px) {
   }
   @media (min-width: 768px) {

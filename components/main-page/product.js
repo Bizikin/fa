@@ -1,6 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { SvgBacketSmall, SvgMinus, SvgPlus } from "../SvgComponents";
+import { useSelector, useDispatch } from "react-redux";
+import _ from "lodash";
+import { incCart, decCart, editCart } from "../../features/user/userSlice";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Product = ({
   id,
@@ -10,6 +14,14 @@ const Product = ({
   weightInGrams,
   price,
 }) => {
+  const { basket } = useSelector((store) => store.user);
+  const dispatch = useDispatch();
+
+  const hasProductId = _.some(basket, { productId: id });
+
+  const currentProduct = _.find(basket, (b) => b.productId === id);
+  console.log("currentProduct", currentProduct);
+
   return (
     <Wrapper>
       <div className="product-image">
@@ -17,22 +29,54 @@ const Product = ({
       </div>
       <div className="product-title">{name}</div>
       <div className="product-descr">{description}</div>
-      <div className="extra">
-        <div className="product-weight">{weightInGrams} гр.</div>
-        <div className="product-price">{price}</div>
-        <div className="product-cart">
-          <SvgBacketSmall />
-        </div>
-      </div>
-      <div className="extra">
-        <div>
-          <SvgMinus />
-        </div>
-        <div className="product-amount">1</div>
-        <div>
-          <SvgPlus />
-        </div>
-      </div>
+      <AnimatePresence mode="wait">
+        {!hasProductId && (
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, scale: 0.5 },
+              visible: { opacity: 1, scale: 1 },
+            }}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            transition={{ duration: 0.4, type: "spring", stiffness: 200 }}
+            className="extra"
+          >
+            <div className="product-weight">{weightInGrams} гр.</div>
+            <div className="product-price">{price}</div>
+            <div
+              className="product-cart"
+              onClick={() => dispatch(editCart({ productId: id }))}
+            >
+              <SvgBacketSmall />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence mode="wait">
+        {hasProductId && (
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, scale: 0.5 },
+              visible: { opacity: 1, scale: 1 },
+            }}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            transition={{ duration: 0.4, type: "spring", stiffness: 200 }}
+            className="extra2"
+          >
+            <div onClick={() => dispatch(decCart({ productId: id }))}>
+              <SvgMinus />
+            </div>
+            <div className="product-amount">{currentProduct.quantity}</div>
+            <div onClick={() => dispatch(incCart({ productId: id }))}>
+              <SvgPlus />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </Wrapper>
   );
 };
@@ -79,13 +123,19 @@ const Wrapper = styled.div`
   }
   .extra {
     display: flex;
-    /* width: 100%; */
     justify-content: space-between;
     align-items: center;
     margin-top: auto;
     .cart {
       cursor: pointer;
     }
+  }
+  .extra2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: 6px;
   }
   .product-price {
     border-radius: 25px;
@@ -118,6 +168,9 @@ const Wrapper = styled.div`
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+  }
+  svg {
+    cursor: pointer;
   }
   @media (min-width: 576px) {
     width: 350px;
