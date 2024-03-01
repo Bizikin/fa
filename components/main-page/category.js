@@ -13,7 +13,7 @@ const Category = ({ name, id }) => {
 
   return (
     <Wrapper
-      className={currentCategory.name === name ? "active" : ""}
+      className={currentCategory?.name === name ? "active" : ""}
       onClick={currentCategoryH}
     >
       {name}

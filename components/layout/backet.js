@@ -10,6 +10,7 @@ const Backet = () => {
     <Wrapper>
       <Link href="/backet" className="link">
         <SvgBacket />
+        {/* {!items && <div className="count">0</div>} */}
         <div className="count">{items}</div>
       </Link>
     </Wrapper>

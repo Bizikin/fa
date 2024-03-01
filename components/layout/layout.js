@@ -7,9 +7,11 @@ import styled from "styled-components";
 import DeliveryModal from "../modal/DeliveryModal";
 import { useSelector, useDispatch } from "react-redux";
 import { AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 const Layout = (props) => {
   const { isDeliveryModal } = useSelector((store) => store.user);
+  const path = usePathname();
   return (
     <>
       <AnimatePresence>{isDeliveryModal && <DeliveryModal />}</AnimatePresence>
@@ -17,7 +19,7 @@ const Layout = (props) => {
         <Header />
         <main>{props.children}</main>
         <Delivery />
-        <Backet />
+        {path !== "/backet" && <Backet />}
         <Footer />
       </Wrapper>
     </>

@@ -1,7 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import { SvgMinus, SvgPlus } from "../SvgComponents";
+import { useSelector, useDispatch } from "react-redux";
+import { incCart, decCart } from "../../features/user/userSlice";
 
-const Item = ({ name, pictures, unitPrice }) => {
+const Item = ({ name, pictures, unitPrice, id, quantity, productId }) => {
+  const dispatch = useDispatch();
   return (
     <Wrapper>
       <div className="product-image">
@@ -10,8 +14,16 @@ const Item = ({ name, pictures, unitPrice }) => {
       <div className="name">
         <p>{name}</p>
       </div>
-      <div className="calc">calculate</div>
-      <p>{unitPrice}</p>
+      <div className="calc">
+        <div onClick={() => dispatch(decCart({ productId: productId }))}>
+          <SvgMinus />
+        </div>
+        <p className="product-amount">{quantity}</p>
+        <div onClick={() => dispatch(incCart({ productId: productId }))}>
+          <SvgPlus />
+        </div>
+      </div>
+      <p>{unitPrice * quantity}₽</p>
     </Wrapper>
   );
 };
@@ -21,7 +33,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   .product-image {
     width: 300px;
     height: 232px;
@@ -45,7 +57,26 @@ const Wrapper = styled.div`
     font-weight: 500;
     line-height: normal;
     text-transform: uppercase;
-    word-break: break-all;
+    width: 300px;
+    margin: 10px;
+  }
+  .calc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 150px;
+    svg {
+      cursor: pointer;
+    }
+  }
+  .product-amount {
+    color: #000;
+    text-shadow: 0px 1.371px 10.283px rgba(0, 0, 0, 0.25);
+    font-family: Inter, sans-serif;
+    font-size: 43.873px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
   }
   @media (min-width: 576px) {
   }

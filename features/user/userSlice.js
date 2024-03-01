@@ -19,7 +19,7 @@ const initialState = {
   currentCategory: "",
   categories: [],
   basket: {},
-  items: "",
+  items: 0,
 };
 
 export const getProducts = createAsyncThunk(
@@ -53,17 +53,20 @@ export const getCart = createAsyncThunk("cart/show", async (info, thunkAPI) => {
 
 export const incCart = createAsyncThunk("cart/inc", async (info, thunkAPI) => {
   const url = `api/basket/${info.productId}/inc`;
+  console.log(info);
   return incCartThunk(url, thunkAPI);
 });
 
 export const decCart = createAsyncThunk("cart/dec", async (info, thunkAPI) => {
   const url = `api/basket/${info.productId}/dec`;
+  console.log(info);
   return decCartThunk(url, thunkAPI);
 });
 
 export const editCart = createAsyncThunk(
   "cart/edit",
   async (info, thunkAPI) => {
+    console.log(info);
     const url = `api/basket/${info.productId}`;
     return editCartThunk(url, thunkAPI);
   }
