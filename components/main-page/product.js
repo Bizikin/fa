@@ -28,7 +28,9 @@ const Product = ({
         <img src={pictureUrls} alt="" />
       </div>
       <div className="product-title">{name}</div>
-      <div className="product-descr">{description}</div>
+      <div className="product-descr" style={{ fontSize: "14px" }}>
+        {description}
+      </div>
       <AnimatePresence mode="wait">
         {!hasProductId && (
           <motion.div
@@ -85,8 +87,8 @@ const Wrapper = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100%;
-  margin: 12px;
-  height: 500px;
+  margin: 20px;
+  height: 520px;
   .product-image {
     width: 100%;
     height: 232px;
@@ -116,10 +118,10 @@ const Wrapper = styled.div`
     color: #000;
     text-shadow: 0 0.586px 4.396px rgba(0, 0, 0, 0.25);
     font-family: Inter, sans-serif;
-    font-size: 14px;
     font-style: normal;
     font-weight: 300;
     line-height: 15px;
+    font-size: 14px;
   }
   .extra {
     display: flex;

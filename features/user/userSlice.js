@@ -91,6 +91,10 @@ const userSlice = createSlice({
     deliveryModalHandler: (state, { payload }) => {
       state.isDeliveryModal = payload;
     },
+    cleanBasketHandler: (state) => {
+      state.basket = {};
+      state.items = 0;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getProducts.pending, (state) => {
@@ -179,5 +183,6 @@ export const {
   currentAddressHandler,
   deliveryModalHandler,
   currentCategoryHandler,
+  cleanBasketHandler,
 } = userSlice.actions;
 export default userSlice.reducer;

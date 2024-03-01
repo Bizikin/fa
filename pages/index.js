@@ -8,6 +8,7 @@ import {
   getProducts,
   getCategories,
   createSession,
+  cleanBasketHandler,
 } from "../features/user/userSlice";
 import Slider from "../components/slider/slider";
 import Products from "../components/main-page/products";
@@ -39,6 +40,7 @@ const Index = () => {
   useEffect(() => {
     const handleBeforeUnload = (e) => {
       dispatch(restaurantModalHandler(true));
+      dispatch(cleanBasketHandler());
       e.preventDefault();
       e.returnValue = "";
     };

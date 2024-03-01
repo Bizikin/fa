@@ -23,7 +23,7 @@ const Item = ({ name, pictures, unitPrice, id, quantity, productId }) => {
           <SvgPlus />
         </div>
       </div>
-      <p>{unitPrice * quantity}₽</p>
+      <p className="price">{unitPrice * quantity}₽</p>
     </Wrapper>
   );
 };
@@ -64,7 +64,7 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 150px;
+    width: 200px;
     svg {
       cursor: pointer;
     }
@@ -77,6 +77,9 @@ const Wrapper = styled.div`
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+  }
+  .price {
+    width: 150px;
   }
   @media (min-width: 576px) {
   }
