@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import Item from "../../components/cart/item";
 import _ from "lodash";
 import Checkbox from "./checkbox";
-import { Toaster, toaast } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
+import { order } from "../../features/user/userSlice";
 
 const initialState = {
   customerName: "",
@@ -13,9 +14,23 @@ const initialState = {
 };
 
 const Items = () => {
-  const { basket } = useSelector((store) => store.user);
+  const { basket, currentAddress } = useSelector((store) => store.user);
+  const dispatch = useDispatch();
   const [payment, setPayment] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState();
   const [values, setValues] = useState(initialState);
+
+  useEffect(() => {
+    if (payment === "НАЛИЧНЫЕ") {
+      setPaymentMethod(0);
+    }
+    if (payment === "ПЕРЕВОД НА КАРТУ") {
+      setPaymentMethod(1);
+    }
+    if (payment === "БАНКОВСКОЙ КАРТОЙ КУРЬЕРУ") {
+      setPaymentMethod(2);
+    }
+  }, [payment]);
 
   const changeHandler = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -38,9 +53,29 @@ const Items = () => {
 
   const submitHandler = () => {
     const { customerName, phoneNumber, address } = values;
-    console.log("address", address);
-    console.log("customerName", customerName);
-    console.log("phoneNumber", phoneNumber);
+    if (!phoneNumber) {
+      return toast.error("Телефон обязателен для заполнения");
+    }
+    if (!currentAddress) {
+      return toast.error("Выберете ресторан");
+    }
+    dispatch(
+      order({
+        address: {
+          street: address,
+        },
+        customerName: customerName,
+        paymentMethod: paymentMethod,
+        phoneNumber: phoneNumber,
+        restaurantId: currentAddress.categoryId,
+      })
+    );
+    // console.log("address", address);
+    // console.log("customerName", customerName);
+    // console.log("paymentMethod", paymentMethod);
+
+    // console.log("phoneNumber", phoneNumber);
+    // console.log("restaurantId", restaurantId.categoryId);
   };
 
   return (
@@ -158,6 +193,7 @@ const Wrapper = styled.div`
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      margin-right: 30px;
       p {
         margin: 0;
       }

@@ -7,6 +7,7 @@ import {
   incCartThunk,
   decCartThunk,
   editCartThunk,
+  orderThunk,
 } from "./thunk";
 
 const initialState = {
@@ -53,24 +54,27 @@ export const getCart = createAsyncThunk("cart/show", async (info, thunkAPI) => {
 
 export const incCart = createAsyncThunk("cart/inc", async (info, thunkAPI) => {
   const url = `api/basket/${info.productId}/inc`;
-  console.log(info);
   return incCartThunk(url, thunkAPI);
 });
 
 export const decCart = createAsyncThunk("cart/dec", async (info, thunkAPI) => {
   const url = `api/basket/${info.productId}/dec`;
-  console.log(info);
   return decCartThunk(url, thunkAPI);
 });
 
 export const editCart = createAsyncThunk(
   "cart/edit",
   async (info, thunkAPI) => {
-    console.log(info);
     const url = `api/basket/${info.productId}`;
     return editCartThunk(url, thunkAPI);
   }
 );
+
+export const order = createAsyncThunk("cart/order", async (info, thunkAPI) => {
+  const url = `api/order`;
+  console.log(info);
+  return orderThunk(url, info, thunkAPI);
+});
 
 const userSlice = createSlice({
   name: "user",
@@ -172,6 +176,18 @@ const userSlice = createSlice({
       state.items = payload.countOfItems;
     });
     builder.addCase(editCart.rejected, (state, { payload }) => {
+      state.isLoading = false;
+    });
+
+    builder.addCase(order.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(order.fulfilled, (state, { payload }) => {
+      state.isLoading = false;
+      state.basket = {};
+      state.total = 0;
+    });
+    builder.addCase(order.rejected, (state, { payload }) => {
       state.isLoading = false;
     });
   },

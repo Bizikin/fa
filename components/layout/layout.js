@@ -18,8 +18,9 @@ const Layout = (props) => {
       <Wrapper>
         <Header />
         <main>{props.children}</main>
-        {path !== "/backet" && <Delivery />}
-        {path !== "/backet" && <Backet />}
+        {!["/backet", "/done"].includes(path) && <Backet />}
+        {!["/backet", "/done"].includes(path) && <Delivery />}
+
         <Footer />
       </Wrapper>
     </>

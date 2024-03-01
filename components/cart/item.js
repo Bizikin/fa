@@ -23,7 +23,7 @@ const Item = ({ name, pictures, unitPrice, id, quantity, productId }) => {
           <SvgPlus />
         </div>
       </div>
-      <p className="price">{unitPrice * quantity}₽</p>
+      <p className="price">{Math.round(unitPrice * quantity)}₽</p>
     </Wrapper>
   );
 };

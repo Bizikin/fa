@@ -40,7 +40,7 @@ const Index = () => {
   useEffect(() => {
     const handleBeforeUnload = (e) => {
       dispatch(restaurantModalHandler(true));
-      dispatch(cleanBasketHandler());
+      // dispatch(cleanBasketHandler());
       e.preventDefault();
       e.returnValue = "";
     };
