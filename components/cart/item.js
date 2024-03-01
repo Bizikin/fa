@@ -37,7 +37,6 @@ const Wrapper = styled.div`
   .product-image {
     width: 300px;
     height: 232px;
-    margin-bottom: 30px;
     img {
       width: 100%;
       height: 100%;
@@ -64,7 +63,8 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 200px;
+    width: 150px;
+    height: 50px;
     svg {
       cursor: pointer;
     }
@@ -80,6 +80,7 @@ const Wrapper = styled.div`
   }
   .price {
     width: 150px;
+    text-align: center;
   }
   @media (min-width: 576px) {
   }
@@ -90,6 +91,7 @@ const Wrapper = styled.div`
     justify-content: space-around;
     .product-image {
       width: 350px;
+      margin-bottom: 30px;
     }
   }
   @media (min-width: 1200px) {

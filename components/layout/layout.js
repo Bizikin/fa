@@ -18,7 +18,7 @@ const Layout = (props) => {
       <Wrapper>
         <Header />
         <main>{props.children}</main>
-        <Delivery />
+        {path !== "/backet" && <Delivery />}
         {path !== "/backet" && <Backet />}
         <Footer />
       </Wrapper>
