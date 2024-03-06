@@ -33,15 +33,15 @@ const Product = ({
       </div>
       <AnimatePresence mode="wait">
         {!hasProductId && (
-          <motion.div
-            variants={{
-              hidden: { opacity: 0, scale: 0.5 },
-              visible: { opacity: 1, scale: 1 },
-            }}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            transition={{ duration: 0.4, type: "spring", stiffness: 200 }}
+          <div
+            // variants={{
+            //   hidden: { opacity: 0, scale: 0.5 },
+            //   visible: { opacity: 1, scale: 1 },
+            // }}
+            // initial="hidden"
+            // animate="visible"
+            // exit="hidden"
+            // transition={{ duration: 0.4, type: "spring", stiffness: 200 }}
             className="extra"
           >
             <div className="product-weight">{weightInGrams} гр.</div>
@@ -52,21 +52,21 @@ const Product = ({
             >
               <SvgBacketSmall />
             </div>
-          </motion.div>
+          </div>
         )}
       </AnimatePresence>
 
       <AnimatePresence mode="wait">
         {hasProductId && (
-          <motion.div
-            variants={{
-              hidden: { opacity: 0, scale: 0.5 },
-              visible: { opacity: 1, scale: 1 },
-            }}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            transition={{ duration: 0.4, type: "spring", stiffness: 200 }}
+          <div
+            // variants={{
+            //   hidden: { opacity: 0, scale: 0.5 },
+            //   visible: { opacity: 1, scale: 1 },
+            // }}
+            // initial="hidden"
+            // animate="visible"
+            // exit="hidden"
+            // transition={{ duration: 0.4, type: "spring", stiffness: 200 }}
             className="extra2"
           >
             <div onClick={() => dispatch(decCart({ productId: id }))}>
@@ -76,7 +76,7 @@ const Product = ({
             <div onClick={() => dispatch(incCart({ productId: id }))}>
               <SvgPlus />
             </div>
-          </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </Wrapper>
