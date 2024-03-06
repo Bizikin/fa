@@ -47,7 +47,7 @@ const Product = ({
           <div className="product-weight">{weightInGrams} гр.</div>
           <div className="product-price">{price}</div>
           <div
-            className="product-cart"
+            className="product-cart t"
             onClick={() => dispatch(editCart({ productId: id }))}
           >
             <SvgBacketSmall />
@@ -69,11 +69,17 @@ const Product = ({
           // transition={{ duration: 0.4, type: "spring", stiffness: 200 }}
           className="extra2"
         >
-          <div onClick={() => dispatch(decCart({ productId: id }))}>
+          <div
+            className="t"
+            onClick={() => dispatch(decCart({ productId: id }))}
+          >
             <SvgMinus />
           </div>
           <div className="product-amount">{currentProduct.quantity}</div>
-          <div onClick={() => dispatch(incCart({ productId: id }))}>
+          <div
+            className="t"
+            onClick={() => dispatch(incCart({ productId: id }))}
+          >
             <SvgPlus />
           </div>
         </div>
@@ -128,10 +134,10 @@ const Wrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-top: auto;
-    margin-top: 100px;
+    /* margin-top: 100px;
     :hover {
       scale: 1.5;
-    }
+    } */
     .cart {
       cursor: pointer;
     }
@@ -142,10 +148,10 @@ const Wrapper = styled.div`
     align-items: center;
     margin-top: auto;
     margin-bottom: 6px;
-    margin-top: 100px;
+    /* margin-top: 100px;
     :hover {
       scale: 1.5;
-    }
+    } */
   }
   .product-price {
     border-radius: 25px;
@@ -178,9 +184,13 @@ const Wrapper = styled.div`
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    border: 1px solid black;
   }
   svg {
     cursor: pointer;
+  }
+  .t {
+    border: 1px solid black;
   }
   @media (min-width: 576px) {
     width: 350px;
