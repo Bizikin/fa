@@ -128,6 +128,10 @@ const Wrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-top: auto;
+    margin-top: 100px;
+    :hover {
+      scale: 1.5;
+    }
     .cart {
       cursor: pointer;
     }
@@ -138,6 +142,10 @@ const Wrapper = styled.div`
     align-items: center;
     margin-top: auto;
     margin-bottom: 6px;
+    margin-top: 100px;
+    :hover {
+      scale: 1.5;
+    }
   }
   .product-price {
     border-radius: 25px;
