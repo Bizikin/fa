@@ -128,6 +128,7 @@ const userSlice = createSlice({
     });
     builder.addCase(createSession.fulfilled, (state, { payload }) => {
       state.isLoading = false;
+      console.log(payload);
     });
     builder.addCase(createSession.rejected, (state, { payload }) => {
       state.isLoading = false;

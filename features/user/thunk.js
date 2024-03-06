@@ -26,6 +26,7 @@ export const createSessionThunk = async (url, thunkAPI) => {
   try {
     const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}/${url}`;
     const resp = await axios.get(fullUrl, { withCredentials: true });
+    console.log(resp.data);
     return resp.data;
   } catch (error) {
     console.log(error.response?.data?.msg);

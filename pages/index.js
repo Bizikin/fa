@@ -20,6 +20,18 @@ const Index = () => {
   );
   const dispatch = useDispatch();
 
+  if (typeof window !== "undefined" && window.sessionStorage) {
+    // безопасно использовать sessionStorage
+    try {
+      sessionStorage.setItem("key", "value");
+      // выполнить действия с sessionStorage
+    } catch (e) {
+      // Обработка исключений, например, когда доступ к sessionStorage ограничен
+    }
+  } else {
+    // Использовать альтернативный механизм хранения
+  }
+
   useEffect(() => {
     dispatch(createSession());
   }, []);

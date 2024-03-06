@@ -184,14 +184,11 @@ const Wrapper = styled.div`
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    border: 1px solid black;
   }
   svg {
     cursor: pointer;
   }
-  .t {
-    border: 1px solid black;
-  }
+
   @media (min-width: 576px) {
     width: 350px;
     .product-image {
