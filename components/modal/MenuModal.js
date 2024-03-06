@@ -58,13 +58,22 @@ const MenuModal = () => {
         ref={wrapperRef}
       >
         <div className="choose-wrapper">
-          <Link href="/" onClick={() => dispatch(modalMenuHandler(false))}>
+          <Link
+            className="item"
+            href="/"
+            onClick={() => dispatch(modalMenuHandler(false))}
+          >
             <div className="choose-address">Меню</div>
           </Link>
-          <Link href="/about" onClick={() => dispatch(modalMenuHandler(false))}>
+          <Link
+            className="item"
+            href="/about"
+            onClick={() => dispatch(modalMenuHandler(false))}
+          >
             <div className="choose-address">О нас</div>
           </Link>
           <Link
+            className="item"
             href="/contacts"
             onClick={() => dispatch(modalMenuHandler(false))}
           >
@@ -126,8 +135,6 @@ const Wrapper = styled.div`
       0px 42.772px 17.011px 0px rgba(0, 0, 0, 0.02),
       0px 66.588px 18.47px 0px rgba(0, 0, 0, 0);
     backdrop-filter: blur(15.553292274475098px);
-    /* color: #000;
-    color: rgba(217, 217, 217, 0.02); */
     color: white;
     text-shadow: 0px 1.619px 12.143px rgba(0, 0, 0, 0.25);
     font-family: Nunito, sans-serif;
@@ -144,6 +151,9 @@ const Wrapper = styled.div`
       background-color: #ffffff;
       color: #000000;
     }
+  }
+  .item {
+    text-decoration: none;
   }
   @media (min-width: 576px) {
     .modal {
