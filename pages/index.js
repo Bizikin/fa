@@ -20,9 +20,9 @@ const Index = () => {
   );
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  dispatch(createSession());
-  // }, []);
+  useEffect(() => {
+    dispatch(createSession());
+  }, []);
 
   useEffect(() => {
     dispatch(
