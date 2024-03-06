@@ -4,7 +4,7 @@ import { SvgBacketSmall, SvgMinus, SvgPlus } from "../SvgComponents";
 import { useSelector, useDispatch } from "react-redux";
 import _ from "lodash";
 import { incCart, decCart, editCart } from "../../features/user/userSlice";
-import { motion, AnimatePresence } from "framer-motion";
+// import { motion, AnimatePresence } from "framer-motion";
 
 const Product = ({
   id,
