@@ -31,54 +31,54 @@ const Product = ({
       <div className="product-descr" style={{ fontSize: "14px" }}>
         {description}
       </div>
-      <AnimatePresence mode="wait">
-        {!hasProductId && (
+      {/* <AnimatePresence mode="wait"> */}
+      {!hasProductId && (
+        <div
+          // variants={{
+          //   hidden: { opacity: 0, scale: 0.5 },
+          //   visible: { opacity: 1, scale: 1 },
+          // }}
+          // initial="hidden"
+          // animate="visible"
+          // exit="hidden"
+          // transition={{ duration: 0.4, type: "spring", stiffness: 200 }}
+          className="extra"
+        >
+          <div className="product-weight">{weightInGrams} гр.</div>
+          <div className="product-price">{price}</div>
           <div
-            // variants={{
-            //   hidden: { opacity: 0, scale: 0.5 },
-            //   visible: { opacity: 1, scale: 1 },
-            // }}
-            // initial="hidden"
-            // animate="visible"
-            // exit="hidden"
-            // transition={{ duration: 0.4, type: "spring", stiffness: 200 }}
-            className="extra"
+            className="product-cart"
+            onClick={() => dispatch(editCart({ productId: id }))}
           >
-            <div className="product-weight">{weightInGrams} гр.</div>
-            <div className="product-price">{price}</div>
-            <div
-              className="product-cart"
-              onClick={() => dispatch(editCart({ productId: id }))}
-            >
-              <SvgBacketSmall />
-            </div>
+            <SvgBacketSmall />
           </div>
-        )}
-      </AnimatePresence>
+        </div>
+      )}
+      {/* </AnimatePresence> */}
 
-      <AnimatePresence mode="wait">
-        {hasProductId && (
-          <div
-            // variants={{
-            //   hidden: { opacity: 0, scale: 0.5 },
-            //   visible: { opacity: 1, scale: 1 },
-            // }}
-            // initial="hidden"
-            // animate="visible"
-            // exit="hidden"
-            // transition={{ duration: 0.4, type: "spring", stiffness: 200 }}
-            className="extra2"
-          >
-            <div onClick={() => dispatch(decCart({ productId: id }))}>
-              <SvgMinus />
-            </div>
-            <div className="product-amount">{currentProduct.quantity}</div>
-            <div onClick={() => dispatch(incCart({ productId: id }))}>
-              <SvgPlus />
-            </div>
+      {/* <AnimatePresence mode="wait"> */}
+      {hasProductId && (
+        <div
+          // variants={{
+          //   hidden: { opacity: 0, scale: 0.5 },
+          //   visible: { opacity: 1, scale: 1 },
+          // }}
+          // initial="hidden"
+          // animate="visible"
+          // exit="hidden"
+          // transition={{ duration: 0.4, type: "spring", stiffness: 200 }}
+          className="extra2"
+        >
+          <div onClick={() => dispatch(decCart({ productId: id }))}>
+            <SvgMinus />
           </div>
-        )}
-      </AnimatePresence>
+          <div className="product-amount">{currentProduct.quantity}</div>
+          <div onClick={() => dispatch(incCart({ productId: id }))}>
+            <SvgPlus />
+          </div>
+        </div>
+      )}
+      {/* </AnimatePresence> */}
     </Wrapper>
   );
 };
