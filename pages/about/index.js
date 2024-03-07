@@ -1,5 +1,4 @@
 import React from "react";
-import { Fragment } from "react";
 import styled from "styled-components";
 import img1 from "../../public/images/about-us/main.png";
 import img2 from "../../public/images/about-us/grid1.png";
@@ -9,79 +8,82 @@ import img5 from "../../public/images/about-us/grid5.png";
 import img6 from "../../public/images/about-us/grid6.png";
 import img7 from "../../public/images/about-us/grid7.png";
 import Image from "next/image";
+import Head from "next/head";
 
 const Index = () => {
   return (
-    <Wrapper>
-      <div className="block">
-        <div className="address">
-          <p className="line1">О нас</p>
-          <p className="line2">Давайте познакомимся поближе!</p>
-          <p className="line3">
-            Сеть кафе «ФАБРИКА» работает уже более трех лет и не перестает
-            радовать вас приятными ценами и качественным сервисом. Мы работаем в
-            формате true cost, что в переводе с английского означает «честная
-            цена».
-          </p>
-        </div>
+    <>
+      <Wrapper>
+        <div className="block">
+          <div className="address">
+            <p className="line1">О нас</p>
+            <p className="line2">Давайте познакомимся поближе!</p>
+            <p className="line3">
+              Сеть кафе «ФАБРИКА» работает уже более трех лет и не перестает
+              радовать вас приятными ценами и качественным сервисом. Мы работаем
+              в формате true cost, что в переводе с английского означает
+              «честная цена».
+            </p>
+          </div>
 
-        <div className="picture">
-          <Image className="map" src={img1} alt="" />
-        </div>
-      </div>
-      <div className="block2">
-        <p className="block2-text">У нас также установлена плата за вход:</p>
-        <p className="text">
-          <span>До 16:00</span> – 100 рублей с человека
-        </p>
-        <p className="text">
-          <span>После 16:00 </span> – 300 рублей с человека
-        </p>
-        <div className="text2">
-          <p className="text">Детям до 7 лет вход бесплатный</p>
-        </div>
-      </div>
-      <div className="block3">
-        <p className="header">Из особенностей нашей сети:</p>
-        <div className="block3-address">
-          <div className="koffe">
-            <div className="k1">
-              <p className="k-text">КАФЕ ПО АДРЕСУ</p>
-              <p className="k-address">ПЕРВОМАЙСКАЯ 39</p>
-              <p className="k-text">Банкетный зал «Барбарис»</p>
-              <p className="k-text2 k-height">
-                Общей вместимостью до 80 человек
-              </p>
-              <p className="k-text">VIP-комната</p>
-              <p className="k-text2">Общей вместимостью до 10 человек</p>
-            </div>
-          </div>
-          <div className="k2"></div>
-          <div className="koffe">
-            <div className="k1">
-              <p className="k-text">КАФЕ ПО АДРЕСУ</p>
-              <p className="k-address">КОРДОННЫЙ 1И</p>
-              <p className="k-text">Вместимость до 65 человек</p>
-              <p className="k-height">Без учета летней веранды</p>
-              <p className="k-text">Первая береговая линия</p>
-              <p>В шаговой доступности к морю</p>
-            </div>
+          <div className="picture">
+            <Image className="map" src={img1} alt="" />
           </div>
         </div>
-      </div>
-      <div className="block4">
-        <div className="row">
-          <Image className="picture" src={img2} />
-          <Image className="picture" src={img3} />
-          <Image className="picture" src={img4} />
+        <div className="block2">
+          <p className="block2-text">У нас также установлена плата за вход:</p>
+          <p className="text">
+            <span>До 16:00</span> – 100 рублей с человека
+          </p>
+          <p className="text">
+            <span>После 16:00 </span> – 300 рублей с человека
+          </p>
+          <div className="text2">
+            <p className="text">Детям до 7 лет вход бесплатный</p>
+          </div>
         </div>
-        <div className="row">
-          <Image className="picture" src={img5} />
-          <Image className="picture" src={img6} />
-          <Image className="picture" src={img7} />
+        <div className="block3">
+          <p className="header">Из особенностей нашей сети:</p>
+          <div className="block3-address">
+            <div className="koffe">
+              <div className="k1">
+                <p className="k-text">КАФЕ ПО АДРЕСУ</p>
+                <p className="k-address">ПЕРВОМАЙСКАЯ 39</p>
+                <p className="k-text">Банкетный зал «Барбарис»</p>
+                <p className="k-text2 k-height">
+                  Общей вместимостью до 80 человек
+                </p>
+                <p className="k-text">VIP-комната</p>
+                <p className="k-text2">Общей вместимостью до 10 человек</p>
+              </div>
+            </div>
+            <div className="k2"></div>
+            <div className="koffe">
+              <div className="k1">
+                <p className="k-text">КАФЕ ПО АДРЕСУ</p>
+                <p className="k-address">КОРДОННЫЙ 1И</p>
+                <p className="k-text">Вместимость до 65 человек</p>
+                <p className="k-height">Без учета летней веранды</p>
+                <p className="k-text">Первая береговая линия</p>
+                <p>В шаговой доступности к морю</p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </Wrapper>
+        <div className="block4">
+          <div className="row">
+            <Image className="picture" src={img2} />
+            <Image className="picture" src={img3} />
+            <Image className="picture" src={img4} />
+          </div>
+          <div className="row">
+            <Image className="picture" src={img5} />
+            <Image className="picture" src={img6} />
+            <Image className="picture" src={img7} />
+          </div>
+        </div>
+      </Wrapper>
+    </>
   );
 };
 

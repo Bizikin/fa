@@ -9,28 +9,33 @@ import {
   getCategories,
   createSession,
   cleanBasketHandler,
+  cleanCurentAddressHandler,
 } from "../features/user/userSlice";
 import Slider from "../components/slider/slider";
 import Products from "../components/main-page/products";
 import Categories from "../components/main-page/categories";
 
-const Index = () => {
+const Index = ({ products }) => {
   const { isRestaurantModal, currentAddress, currentCategory } = useSelector(
     (store) => store.user
   );
   const dispatch = useDispatch();
 
-  if (typeof window !== "undefined" && window.sessionStorage) {
-    // безопасно использовать sessionStorage
-    try {
-      sessionStorage.setItem("key", "value");
-      // выполнить действия с sessionStorage
-    } catch (e) {
-      // Обработка исключений, например, когда доступ к sessionStorage ограничен
-    }
-  } else {
-    // Использовать альтернативный механизм хранения
-  }
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      dispatch(restaurantModalHandler(true));
+      // dispatch(cleanBasketHandler());
+      dispatch(cleanCurentAddressHandler());
+      e.preventDefault();
+      e.returnValue = "";
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
 
   useEffect(() => {
     dispatch(createSession());
@@ -49,30 +54,28 @@ const Index = () => {
     dispatch(getCategories({ categoryId: currentAddress?.categoryId || 1 }));
   }, [currentAddress]);
 
-  useEffect(() => {
-    const handleBeforeUnload = (e) => {
-      dispatch(restaurantModalHandler(true));
-      // dispatch(cleanBasketHandler());
-      e.preventDefault();
-      e.returnValue = "";
-    };
-
-    window.addEventListener("beforeunload", handleBeforeUnload);
-
-    return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
-  }, []);
-
   return (
     <Wrapper>
       {isRestaurantModal && <RestaurantModal />}
       <Slider />
       <Categories />
-      <Products />
+      <Products products={products} />
     </Wrapper>
   );
 };
+
+export async function getStaticProps() {
+  const response = await fetch(
+    `https://api.dev.fabrika-rest.ru/api/product?restaurantId=1&categoryId=1`
+  );
+  const data = await response.json();
+
+  return {
+    props: {
+      products: data,
+    },
+  };
+}
 
 const Wrapper = styled.div`
   display: flex;

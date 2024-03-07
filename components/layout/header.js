@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import { SvgHeaderLogo, SvgHeaderCart, SvgPhone } from "../SvgComponents";
@@ -11,25 +11,40 @@ import {
   currentAddressHandler,
 } from "../../features/user/userSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { useRouter } from "next/router";
 
 const Header = () => {
   const [extra, setExtra] = useState(false);
+  const router = useRouter();
 
   const dispatch = useDispatch();
 
   const { isModalMenu, currentAddress } = useSelector((store) => store.user);
 
   const addressHandler1 = () => {
+    const newCategoryId = 1;
+
     dispatch(
-      currentAddressHandler({ address: "Кордонный переулок 1И", categoryId: 1 })
+      currentAddressHandler({
+        address: "Кордонный переулок 1И",
+        categoryId: newCategoryId,
+      })
     );
     setExtra(false);
+    router.push(`/${newCategoryId}/1`);
   };
+
   const addressHandler2 = () => {
+    const newCategoryId = 2;
+
     dispatch(
-      currentAddressHandler({ address: "Первомайская 39", categoryId: 2 })
+      currentAddressHandler({
+        address: "Первомайская 39",
+        categoryId: newCategoryId,
+      })
     );
     setExtra(false);
+    router.push(`/${newCategoryId}/1`);
   };
 
   return (
@@ -66,6 +81,7 @@ const Header = () => {
                 <p className="restaurant" onClick={addressHandler1}>
                   Кордонный переулок 1И
                 </p>
+
                 <p className="restaurant" onClick={addressHandler2}>
                   Первомайская 39
                 </p>
@@ -206,6 +222,9 @@ const Wrapper = styled.div`
     width: 280px;
     display: flex;
     justify-content: center;
+  }
+  .link {
+    text-decoration: none;
   }
   @media (min-width: 576px) {
   }

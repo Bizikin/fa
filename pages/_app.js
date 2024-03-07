@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-import store, { persistor } from "../store"; // Импортируйте store и persistor из вашего файла конфигурации Redux
+import store, { persistor } from "../store";
 import React from "react";
 import Layout from "../components/layout/layout";
 import { TextEncoder, TextDecoder } from "text-encoding";
@@ -13,11 +13,11 @@ function MyApp({ Component, pageProps }) {
   }
   return (
     <Provider store={store}>
-      <PersistGate loading={<div>Loading...</div>} persistor={persistor}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </PersistGate>
+      {/* <PersistGate loading={<div>Loading...</div>} persistor={persistor}> */}
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+      {/* </PersistGate> */}
     </Provider>
   );
 }

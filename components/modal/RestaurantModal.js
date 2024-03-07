@@ -5,9 +5,11 @@ import {
   restaurantModalHandler,
   currentAddressHandler,
 } from "../../features/user/userSlice";
+import { useRouter } from "next/router";
 
 const RestaurantModal = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const wrapperRef = useRef(null);
 
@@ -26,16 +28,29 @@ const RestaurantModal = () => {
   }, []);
 
   const addressHandler1 = () => {
+    const newCategoryId = 1;
+
     dispatch(
-      currentAddressHandler({ address: "Кордонный переулок 1И", categoryId: 1 })
+      currentAddressHandler({
+        address: "Кордонный переулок 1И",
+        categoryId: newCategoryId,
+      })
     );
     dispatch(restaurantModalHandler(false));
+    router.push(`/${newCategoryId}/1`);
   };
+
   const addressHandler2 = () => {
+    const newCategoryId = 2;
+
     dispatch(
-      currentAddressHandler({ address: "Первомайская 39", categoryId: 2 })
+      currentAddressHandler({
+        address: "Первомайская 39",
+        categoryId: newCategoryId,
+      })
     );
     dispatch(restaurantModalHandler(false));
+    router.push(`/${newCategoryId}/1`);
   };
 
   return (

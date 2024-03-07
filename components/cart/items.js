@@ -41,11 +41,7 @@ const Items = () => {
     total: b.quantity * b.unitPrice,
   }));
 
-  // console.log("backet2", backet2);
-
   const totalAmount = _.sumBy(backet2, (b) => b.total);
-
-  // console.log("totalAmount", totalAmount);
 
   const stateHandler = (state) => {
     setPayment(state);
@@ -70,12 +66,6 @@ const Items = () => {
         restaurantId: currentAddress.categoryId,
       })
     );
-    // console.log("address", address);
-    // console.log("customerName", customerName);
-    // console.log("paymentMethod", paymentMethod);
-
-    // console.log("phoneNumber", phoneNumber);
-    // console.log("restaurantId", restaurantId.categoryId);
   };
 
   return (
@@ -143,11 +133,8 @@ const Items = () => {
           duration: 5000,
           style: {
             padding: "1rem",
-            // backgroundColor: "#ffdfff",
+
             fontSize: "1rem",
-            // color: "#17132a",
-            // borderColor: "#ff00ff",
-            // border: "2px solid #ff00ff",
           },
         }}
       />
@@ -161,7 +148,7 @@ const Wrapper = styled.div`
     margin-right: 50px;
   }
   input {
-    width: 460px;
+    max-width: 460px;
     margin-bottom: 31px;
     padding: 11px 22px;
     box-sizing: border-box;

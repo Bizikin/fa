@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import Category from "./category";
 
-const Categories = () => {
-  const { categories, currentAddress } = useSelector((store) => store.user);
+const Categories = ({ categories }) => {
+  // const { categories, currentAddress } = useSelector((store) => store.user);
   return (
     <Wrapper>
       {categories?.map((category) => (

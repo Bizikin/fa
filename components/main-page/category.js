@@ -2,18 +2,34 @@ import React from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { currentCategoryHandler } from "../../features/user/userSlice";
+import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 
 const Category = ({ name, id }) => {
-  const { currentCategory } = useSelector((store) => store.user);
+  const { currentCategory, currentAddress } = useSelector(
+    (store) => store.user
+  );
+
+  const path = usePathname();
+  const router = useRouter();
   const dispatch = useDispatch();
 
   const currentCategoryH = () => {
+    const newCategoryId = currentAddress?.categoryId || 1;
     dispatch(currentCategoryHandler({ id: id, name: name }));
+    router.push(`/${currentAddress.categoryId}/${id || 1}`);
   };
+
+  // console.log("path", path);
+  // console.log("router", router);
+
+  const pathArray = router.asPath.slice(1).split("/");
+  // console.log("pathArray", pathArray);
+  // console.log(currentCategory.id);
 
   return (
     <Wrapper
-      className={currentCategory?.name === name ? "active" : ""}
+      className={id === parseInt(pathArray[1]) ? "active" : ""}
       onClick={currentCategoryH}
     >
       {name}

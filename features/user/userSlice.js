@@ -72,7 +72,6 @@ export const editCart = createAsyncThunk(
 
 export const order = createAsyncThunk("cart/order", async (info, thunkAPI) => {
   const url = `api/order`;
-  console.log(info);
   return orderThunk(url, info, thunkAPI);
 });
 
@@ -98,6 +97,9 @@ const userSlice = createSlice({
     cleanBasketHandler: (state) => {
       state.basket = {};
       state.items = 0;
+    },
+    cleanCurentAddressHandler: (state) => {
+      state.currentAddress = "";
     },
   },
   extraReducers: (builder) => {
@@ -201,5 +203,6 @@ export const {
   deliveryModalHandler,
   currentCategoryHandler,
   cleanBasketHandler,
+  cleanCurentAddressHandler,
 } = userSlice.actions;
 export default userSlice.reducer;

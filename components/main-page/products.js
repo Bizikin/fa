@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import Product from "./product";
 
-const Products = () => {
-  const { products } = useSelector((store) => store.user);
+const Products = ({ products }) => {
+  // const { products } = useSelector((store) => store.user);
   return (
     <Wrapper>
       {products?.map((product) => (
