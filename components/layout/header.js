@@ -151,7 +151,9 @@ const Header = () => {
         </Link>
       </div>
       <div className="menu2">
-        <SvgPhone />
+        <a className="phone" href="tel:+7928841171">
+          <SvgPhone />
+        </a>
       </div>
     </Wrapper>
   );

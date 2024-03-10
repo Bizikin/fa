@@ -34,9 +34,15 @@ const Footer = () => {
       </div>
       <div className="contacts">
         <div className="address">Первомайская 39</div>
-        <div className="phone">8 (928) 841 11 71</div>
+        {/* <div className="phone">8 (928) 841 11 71</div> */}
+        <a className="phone" href="tel:+7928841171">
+          8 (928) 841-11-71
+        </a>
         <div className="address">Переулок Кордонный 1И</div>
-        <div className="phone">8 (938) 557-70-30</div>
+        {/* <div className="phone">8 (938) 557-70-30</div> */}
+        <a className="phone" href="tel:+79385577030">
+          8 (938) 557-70-30
+        </a>
       </div>
     </Wrapper>
   );
@@ -145,6 +151,10 @@ const Wrapper = styled.div`
         text-decoration: none;
       }
     }
+  }
+  a {
+    text-decoration: none;
+    color: white;
   }
   @media (min-width: 1200px) {
   }
