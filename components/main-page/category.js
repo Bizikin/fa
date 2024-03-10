@@ -17,7 +17,7 @@ const Category = ({ name, id }) => {
   const currentCategoryH = () => {
     const newCategoryId = currentAddress?.categoryId || 1;
     dispatch(currentCategoryHandler({ id: id, name: name }));
-    router.push(`/${currentAddress.categoryId}/${id || 1}`);
+    router.push(`/${currentAddress.categoryId || 1}/${id || 1}`);
   };
 
   // console.log("path", path);
