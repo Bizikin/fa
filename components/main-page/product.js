@@ -23,7 +23,7 @@ const Product = ({
 
   const editCartHandler = () => {
     dispatch(editCart({ productId: id }));
-    console.log("id", id);
+    // console.log("id", id);
   };
 
   return (

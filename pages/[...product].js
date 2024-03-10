@@ -26,8 +26,8 @@ const Index = ({ products, categories }) => {
 
 export async function getServerSideProps(context) {
   const { product } = context.params;
-  const restaurantId = product[0];
-  const categoryId = product[1];
+  const restaurantId = product[0] || 1;
+  const categoryId = product[1] || 1;
 
   const url_1 = `https://api.dev.fabrika-rest.ru/api/category?restaurantId=${restaurantId}`;
   const url_2 = `https://api.dev.fabrika-rest.ru/api/product?restaurantId=${restaurantId}&categoryId=${categoryId}`;

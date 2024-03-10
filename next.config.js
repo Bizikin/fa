@@ -34,6 +34,9 @@ const NextConfig = {
   compiler: {
     styledComponents: true,
   },
+  images: {
+    unoptimized: true,
+  },
 };
 
 module.exports = NextConfig;

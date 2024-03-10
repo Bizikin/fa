@@ -141,6 +141,8 @@ const userSlice = createSlice({
     });
     builder.addCase(getCart.fulfilled, (state, { payload }) => {
       state.isLoading = false;
+      state.basket = payload.basketItems;
+      state.items = payload.countOfItems;
     });
     builder.addCase(getCart.rejected, (state, { payload }) => {
       state.isLoading = false;

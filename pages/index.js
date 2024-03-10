@@ -14,18 +14,23 @@ import {
 import Slider from "../components/slider/slider";
 import Products from "../components/main-page/products";
 import Categories from "../components/main-page/categories";
+import { getCart, editCart } from "../features/user/userSlice";
 
-const Index = ({ products }) => {
+const Index = ({ products, categories }) => {
   const { isRestaurantModal, currentAddress, currentCategory } = useSelector(
     (store) => store.user
   );
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(getCart());
+  }, []);
+
+  useEffect(() => {
     const handleBeforeUnload = (e) => {
       dispatch(restaurantModalHandler(true));
       // dispatch(cleanBasketHandler());
-      dispatch(cleanCurentAddressHandler());
+      // dispatch(cleanCurentAddressHandler());
       e.preventDefault();
       e.returnValue = "";
     };
@@ -58,23 +63,39 @@ const Index = ({ products }) => {
     <Wrapper>
       {isRestaurantModal && <RestaurantModal />}
       <Slider />
-      <Categories />
+      <Categories categories={categories} />
       <Products products={products} />
     </Wrapper>
   );
 };
 
 export async function getStaticProps() {
-  const response = await fetch(
-    `https://api.dev.fabrika-rest.ru/api/product?restaurantId=1&categoryId=1`
-  );
-  const data = await response.json();
+  const url_1 = `https://api.dev.fabrika-rest.ru/api/category?restaurantId=1`;
+  const url_2 = `https://api.dev.fabrika-rest.ru/api/product?restaurantId=1&categoryId=1`;
 
-  return {
-    props: {
-      products: data,
-    },
-  };
+  try {
+    const [data_1, data_2] = await Promise.all([
+      fetch(url_1).then((response) => response.json()),
+      fetch(url_2).then((response) => response.json()),
+    ]);
+
+    return {
+      props: {
+        categories: data_1,
+        products: data_2,
+      },
+    };
+  } catch (error) {
+    console.error("Ошибка при получении данных:", error);
+
+    return {
+      props: {
+        categories: [],
+        products: [],
+        error: "Ошибка при загрузке данных",
+      },
+    };
+  }
 }
 
 const Wrapper = styled.div`
