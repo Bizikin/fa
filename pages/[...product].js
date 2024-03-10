@@ -14,10 +14,6 @@ const Index = ({ products, categories }) => {
     (store) => store.user
   );
 
-  useEffect(() => {
-    window.scrollTo(0, 300);
-  }, []);
-
   return (
     <Wrapper>
       {isRestaurantModal && <RestaurantModal />}
