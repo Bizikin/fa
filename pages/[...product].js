@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import RestaurantModal from "../components/modal/RestaurantModal";
 import { useSelector } from "react-redux";
