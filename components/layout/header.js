@@ -100,7 +100,7 @@ const Header = () => {
       </div>
       <Link className="logo link" href="/">
         <SvgHeaderLogo />
-        {/* _______________________________________________ */}
+
         <div className="restaurants r2">
           {currentAddress && <p>{currentAddress.address}</p>}
           {!currentAddress && <p>Ресторан не выбран</p>}
@@ -137,7 +137,6 @@ const Header = () => {
             )}
           </AnimatePresence>
         </div>
-        {/* _______________________________________________ */}
       </Link>
       <div className="menu">
         <Link href="/about" className="about link">
